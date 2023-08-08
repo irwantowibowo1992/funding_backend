@@ -1,12 +1,19 @@
-const { Model } = require('objection')
-const Knex = require('knex')
-const bcrypt = require('bcrypt')
-const knexConfig = require('../../knexfile')
+const { Model } = require('objection');
+const objectionSoftDelete = require('objection-js-soft-delete');
+const Knex = require('knex');
+const bcrypt = require('bcrypt');
+const knexConfig = require('../../knexfile');
 
-const knex = Knex(knexConfig[process.env.NODE_ENV || 'development'])
-Model.knex(knex)
+const knex = Knex(knexConfig[process.env.NODE_ENV || 'development']);
+Model.knex(knex);
 
-class User extends Model {
+const softDelete = objectionSoftDelete.default({
+  columnName: 'deleted_at',
+  deletedValue: new Date(),
+  notDeletedValue: null,
+});
+
+class User extends softDelete(Model) {
   static get tableName () {
     return 'users'
   }

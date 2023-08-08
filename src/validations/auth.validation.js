@@ -10,7 +10,8 @@ const authValidationSchema = {
 
     login: Joi.object({
         email: Joi.string().email().required(),
-        password: Joi.string().min(6).max(30).required()
+        password: Joi.string().min(6).max(30).required(),
+        isRemember: Joi.boolean().optional()
     }),
 
     forgotPassword: Joi.object({

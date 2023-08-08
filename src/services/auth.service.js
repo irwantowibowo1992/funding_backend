@@ -71,7 +71,7 @@ class UserService {
       name: user.name,
       email: user.email,
       username: user.username,
-      role: user.role
+      role: user.user_role
     }
 
     const expiredIn = {
@@ -92,7 +92,7 @@ class UserService {
         name: user.name,
         email: user.email,
         username: user.username,
-        role: user.role
+        role: user.user_role
       },
       token,
       isRemember

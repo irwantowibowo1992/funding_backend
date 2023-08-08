@@ -5,19 +5,16 @@ const knexConfig = require('../../knexfile');
 const knex = Knex(knexConfig[process.env.NODE_ENV || 'development']);
 Model.knex(knex);
 
-class UserLoginInfo extends Model {
+class UserRole extends Model {
   static get tableName () {
-    return 'user_login_info';
+    return 'user_role';
   }
 
   static column = {
     id: `${this.tableName}.id`,
     user_id: `${this.tableName}.user_id`,
-    otp: `${this.tableName}.otp`,
-    otp_count: `${this.tableName}.otp_count`,
-    forgot_password_token: `${this.tableName}.forgot_password_token`,
-    last_login: `${this.tableName}.last_login`
+    role: `${this.tableName}.role`,
   }
 }
 
-module.exports = UserLoginInfo;
+module.exports = UserRole;

@@ -1,4 +1,4 @@
-const router = require('express-promise-router')()
+const router = require('express-promise-router')();
 const AuthController = require('../controllers/auth.controller');
 const ValidationMiddleware = require('../middlewares/validation.middleware');
 const authValidationSchema = require('../validations/auth.validation');
